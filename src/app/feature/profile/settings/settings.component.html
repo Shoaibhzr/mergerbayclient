@@ -42,24 +42,40 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="buy-out-review" role="tabpanel" aria-labelledby="buy-out-review-tab">
-                                    <form class="row profile_form">
+                                    <form class="row profile_form" [formGroup]="resetPasswordForm">
                                         <div class="col-md-6 mb-3 clr_light">
                                             <label class="mb-2">Enter Old Password </label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" [ngClass]="!oldPassword?.errors?.['required'] ?'form-control field_error': 'form-control' "   formControlName="oldPwd">
+                                            <span *ngIf="isOldPasswordCorrect" >Password is In correct</span>
+                                            <div class="" *ngIf="resetPasswordForm.controls['oldPwd'].touched && resetPasswordForm.controls['oldPwd'].invalid">
+                                                <div *ngIf="oldPassword?.errors?.['required']" class="error-text">Old Password is required.</div>
+                                               
+                                              </div>
+                                            
                                         </div>
                                         <div class="col-md-6 mb-3 clr_light">
                                             <label class="mb-2">Enter New Password</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" class="form-control" formControlName="newPwd">
+                                            <div class="" *ngIf="resetPasswordForm.controls['newPwd'].touched && resetPasswordForm.controls['newPwd'].invalid">
+                                                <div *ngIf="newPassword?.errors?.['required']" class="error-text">New Password is required.</div>
+                                               
+                                              </div>
+
                                         </div>
                                         <div class="col-md-6 mb-3 clr_light">
                                             <label class="mb-2">Re-Enter New Password</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" class="form-control" formControlName="confirmPwd">
+                                            <span *ngIf="isMatch"> Passwords do not match.</span>
+                                            <div class="" *ngIf="resetPasswordForm.controls['newPwd'].touched && resetPasswordForm.controls['newPwd'].invalid">
+                                                <div *ngIf="newPassword?.errors?.['required']" class="error-text">Re-Enter New Password is required.</div>
+                                               
+                                              </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-4"></div>
                                                 <div class="col-lg-3 col-md-4 mb-3 mb-md-0"><button type="button" class="form_tab_btn w-100 form_btn_dark">Back</button></div>
-                                                <div class="col-lg-3 col-md-4"><button type="button" class="form_tab_btn w-100 theme_btn">Update Password</button></div>
+                                                <div class="col-lg-3 col-md-4"><button type="button" class="form_tab_btn w-100 theme_btn" (click)="matchpassword()">Update Password</button></div>
                                             </div>
                                         </div>
                                     </form>

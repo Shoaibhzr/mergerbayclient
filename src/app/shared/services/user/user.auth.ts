@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { GlobalServiceService } from "../global/global.service";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -62,5 +63,8 @@ export class UserAuthService {
 
   userSignIn(obj:any) {
     return this.http.post(this.baseUrl + `Authentication/login`, obj);
+  }
+  matchpassword(obj:any){
+    return this.http.post(this.baseUrl + `Authentication/matchedPassword`, obj);
   }
 }

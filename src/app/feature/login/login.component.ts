@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('usertoken',data.user_Token);
             localStorage.setItem('username',data.userName);
             localStorage.setItem('userId',data.user_Id);
+            localStorage.setItem('userEmail',data.email_Address);
             this.interconnected.storeUserInfo(data);
             setTimeout(() =>{
               this.saveDraftData(data.user_Id);

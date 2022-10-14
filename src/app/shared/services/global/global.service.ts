@@ -5,8 +5,8 @@ import { useAnimation } from '@angular/animations';
   providedIn: "root"
 })
 export class GlobalServiceService {
-static ApiUrl: string = 'https://localhost:7065/api/';
- //static ApiUrl: string = 'https://mergerbayservertest1.azurewebsites.net/api/';
+//static ApiUrl: string = 'https://localhost:7065/api/';
+ static ApiUrl: string = 'https://mergerbayservertest1.azurewebsites.net/api/';
   static user_token:string='';
   static email_sys:string='';
   static userName_sys:string='';
