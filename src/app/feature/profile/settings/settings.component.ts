@@ -37,8 +37,11 @@ isMatch:boolean = false;
   }
   
   public matchpassword():void{
-    console.log(this.resetPasswordForm.controls['oldPwd'].errors)
-
+    console.log(this.resetPasswordForm.value)
+  
+    if (this.resetPasswordForm.controls['oldPwd'].value != null) {
+      this.resetPasswordForm.markAllAsTouched();    
+    }
     let formValues = this.resetPasswordForm.value;
     let obj={    
       userName: localStorage.getItem('userEmail'),
