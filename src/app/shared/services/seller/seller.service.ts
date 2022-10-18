@@ -1,3 +1,4 @@
+import { SellOutVm } from './../../models/SellOutVm';
 import { SP_SELLOUTS } from 'src/app/shared/models/SP_SELLOUTS';
 import { SP_RecommendedDeals } from './../../models/RecommendedDeals';
 import { SearchParams } from './../../models/SearchParams';
@@ -57,4 +58,18 @@ export class SellerService {
     readBuyoutData(prm: SearchParams){
       return this.http.get<SP_BUYOUTS>(this.baseUrl+'Get/BuyOutData',{params: {...prm}});
     }
+    readAllSellOuts(prm: SearchParams){
+      return this.http.get<SP_SELLOUTS[]>(this.baseUrl+'Get/AllSellOuts',{params: {...prm}});
+    }
+    readAllBuyOuts(prm: SearchParams){
+      return this.http.get<SP_BUYOUTS[]>(this.baseUrl+'Get/AllBuyOuts',{params: {...prm}});
+    }
+
+    //===Admin methods
+    updateSellersData(items:SellOutVm[]){
+      return this.http.post(this.baseUrl+'update/SellerByAdmin',items,{responseType: 'text'});
+   }
+    updateBuyersData(items:SellOutVm[]){
+      return this.http.post(this.baseUrl+'update/BuyerByAdmin',items,{responseType: 'text'});
+   }
 } 

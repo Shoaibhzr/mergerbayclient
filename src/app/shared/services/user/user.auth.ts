@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { GlobalServiceService } from "../global/global.service";
-import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -36,7 +35,21 @@ export class UserAuthService {
     return this.http.post(this.baseUrl + `UserProfile/get/companycategory`, obj);
   }
 
+  matchpassword(obj:any){
+    return this.http.post(this.baseUrl + `Authentication/matchedPassword`, obj);
+  }
 
+  changePassword(obj:any){
+    return this.http.post(this.baseUrl + `UserManagement/ChangePassword`, obj);
+  }
+
+  notificationSetting(obj:any){
+    return this.http.post(this.baseUrl + `UserManagement/NotificationSetting`, obj);
+  }
+
+  getNotificationSetting(obj:any){
+    return this.http.post(this.baseUrl + `UserManagement/get/NotificationSetting`, obj);
+  }
 
   getCompanyInformation(obj:any) {
     console.log(obj);
@@ -63,8 +76,5 @@ export class UserAuthService {
 
   userSignIn(obj:any) {
     return this.http.post(this.baseUrl + `Authentication/login`, obj);
-  }
-  matchpassword(obj:any){
-    return this.http.post(this.baseUrl + `Authentication/matchedPassword`, obj);
   }
 }

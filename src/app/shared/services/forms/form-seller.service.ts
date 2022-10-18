@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LessOrGreaterThan, NumbersOnly } from '../common/Validations';
 
 @Injectable({
@@ -143,6 +143,70 @@ Validators.compose([
     })
   }
 
+  initNewNotificationSetting = (): FormGroup => {
+    return this.builder.group({
+      IsPending: [false,
+        Validators.compose([
+          Validators.required,
+        ]),
+      ],
+      IsFeature: [false,
+        Validators.compose([
+          Validators.required,
+        ]),
+      ]
+    })
+  }
+
+  initChangedPassword = (): FormGroup => {
+    return this.builder.group({
+      oldPwd: ['',
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(320), // https://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address
+      ]),
+      Validators.composeAsync([
+        this.checkPhoneValid.bind(this)
+    ])
+    ],
+    newPwd: ['',
+    Validators.compose([
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(320), // https://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address
+    ])
+  ],
+  confirmPwd: ['',
+  Validators.compose([
+    Validators.required,
+    Validators.minLength(8),
+    Validators.maxLength(320), // https://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address
+  ])
+],
+    },
+    {
+      validator: [this.MustMatchReEnter("newPwd", "confirmPwd")]
+     
+    }
+    )
+  }
+
+  private checkPhoneValid(control: AbstractControl): Promise<any> {
+    debugger;
+    const q = new Promise((resolve, reject) => {
+      // determine result from an http response or something...
+      if (control.value !==  localStorage.getItem('existingpassword')) {
+        control.setErrors({ mustMatch: true });
+      } else {
+        control.setErrors(null);
+      }
+  });
+  return q;
+    // Avoids initial check against an empty string
+    
+}
+
   initSignupForm = (): FormGroup => {
     return this.builder.group({
       firstname: ['',
@@ -207,6 +271,44 @@ Validators.compose([
 
       // set error on matchingControl if validation fails
       if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+
+  MustMatchReEnter(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors['mustMatch']) {
+        // return if another validator has already found an error on the matchingControl
+        return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+
+   MustMatchOldPassword(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors['mustMatch']) {
+        // return if another validator has already found an error on the matchingControl
+        return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !==  localStorage.getItem('existingpassword')) {
         matchingControl.setErrors({ mustMatch: true });
       } else {
         matchingControl.setErrors(null);

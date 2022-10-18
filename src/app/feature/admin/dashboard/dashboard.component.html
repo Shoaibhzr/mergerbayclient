@@ -1,1 +1,13 @@
-<p>dashboard works!</p>
+<!-- banner -->
+<section class="d-flex justify-content-center position-relative overflow-hidden" style="padding:75px;min-height: 100vh;">
+	<div class="container w-100 position-relative">
+        <div class="banner_btns text-uppercase">
+            <a [routerLink]="['propositions']">
+                Propositions
+            </a>
+        </div>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+	</div>
+</section>

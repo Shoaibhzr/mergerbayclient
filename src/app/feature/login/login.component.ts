@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
     this.emailErrorMessage='';
     this.passwordErrorMessage='';
     let formLogin=this.signInForm.value;
+    localStorage.setItem('existingpassword',formLogin.passwordlogin);
     if(this.signInForm.valid)
     {
       const body = {

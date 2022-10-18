@@ -6,97 +6,82 @@
                     <div class="col-md-11 mx-auto">
                         <div class="form_inner mx-auto mw-100">
                             <h4 class="text-center mb-4"><b>Settings</b></h4>
-                            <ul class="nav mx-auto mb-4 nav-pills nav-fill detils-review-tabs" id="detail-review-tab"
-                                role="tablist">
+                            <ul class="nav mx-auto mb-4 nav-pills nav-fill detils-review-tabs" id="detail-review-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="buy-out-details-tab" data-bs-toggle="tab"
-                                        data-bs-target="#buy-out-details" type="button" role="tab"
-                                        aria-controls="buy-out-details" aria-selected="true">Subscription</button>
+                                    <button class="nav-link active" id="buy-out-details-tab" data-bs-toggle="tab" data-bs-target="#buy-out-details" type="button" role="tab" aria-controls="buy-out-details" aria-selected="true">Subscription</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="buy-out-review-tab" data-bs-toggle="tab"
-                                        data-bs-target="#buy-out-review" type="button" role="tab"
-                                        aria-controls="buy-out-review" aria-selected="false">Change Password</button>
+                                    <button class="nav-link" id="buy-out-review-tab" data-bs-toggle="tab" data-bs-target="#buy-out-review" type="button" role="tab" aria-controls="buy-out-review" aria-selected="false">Change Password</button>
                                 </li>
                             </ul>
                             <div class="tab-content detils-review-content" id="detail-review-tabContent">
-                                <div class="tab-pane fade show active" id="buy-out-details" role="tabpanel"
-                                    aria-labelledby="buy-out-details-tab">
+                                <div class="tab-pane fade show active" id="buy-out-details" role="tabpanel" aria-labelledby="buy-out-details-tab">
+                                    <form [formGroup]="notificationSettingForm">
                                     <h4 class="mb-4">Email Notifications</h4>
                                     <div class="mb-4 d-flex align-items-center justify-content-between fs_16">
                                         <div class="col-md-7">
                                             Pending Actions - Actions or messages awaiting your response on Mergers Bay.
                                         </div>
                                         <label class="switch ms-4">
-                                            <input type="checkbox" name="check1">
+                                            <input type="checkbox" name="check1" formControlName="IsPending">
                                             <span class="slider"></span>
                                         </label>
                                     </div>
                                     <div class="mb-4 d-flex align-items-center justify-content-between fs_16">
                                         <div class="col-md-7">
-                                            Featuring Requirements - A Summary of exclusive transaction opportunities on
-                                            Mergers Bay.
+                                            Featuring Requirements - A Summary of exclusive transaction opportunities on Mergers Bay.
                                         </div>
                                         <label class="switch ms-4">
-                                            <input type="checkbox" name="check2">
+                                            <input type="checkbox" name="check2" formControlName="IsFeature">
                                             <span class="slider"></span>
                                         </label>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-4"></div>
                                         <div class="col-lg-3 col-md-4"></div>
-                                        <div class="col-lg-3 col-md-4 mt-3 mt-md-0"><button type="button"
-                                                class="form_tab_btn w-100 theme_btn">Next</button></div>
+                                        <div class="col-lg-3 col-md-4 mt-3 mt-md-0"><button type="button" class="form_tab_btn w-100 theme_btn" (click)="saveSetting()">Next</button></div>
                                     </div>
+                                </form>
+
+
                                 </div>
-                                <div class="tab-pane fade" id="buy-out-review" role="tabpanel"
-                                    aria-labelledby="buy-out-review-tab">
+                                <div class="tab-pane fade" id="buy-out-review" role="tabpanel" aria-labelledby="buy-out-review-tab">
                                     <form class="row profile_form" [formGroup]="resetPasswordForm">
                                         <div class="col-md-6 mb-3 clr_light">
                                             <label class="mb-2">Enter Old Password </label>
-                                            <input type="password"
-                                                [ngClass]="!oldPassword?.errors?.['required'] || resetPasswordForm.controls['oldPwd'].touched  ?'form-control field_error': 'form-control' "
-                                                formControlName="oldPwd">
-                                            <div class=""
-                                                *ngIf="resetPasswordForm.controls['oldPwd'].touched && resetPasswordForm.controls['oldPwd'].invalid">
-                                                <div *ngIf="oldPassword?.errors?.['required']" class="error-text">Old
-                                                    Password is required.</div>
+                                            <input type="password" [ngClass]="oldPassword?.invalid && (oldPassword?.dirty || oldPassword?.touched)  ?'form-control field_error': 'form-control' "
+                                            formControlName="oldPwd">
+                                            <div *ngIf="oldPassword?.invalid && (oldPassword?.dirty || oldPassword?.touched)" class="error-text">
+                                                <div *ngIf="oldPassword?.errors?.['required']"> Old Password is required</div>
+                                                <div *ngIf="oldPassword?.errors?.['minlength']">Minimum 8 characters. </div>
+                                                <div *ngIf="oldPassword?.errors?.['mustMatch']">Passwords must match</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-3 clr_light">
                                             <label class="mb-2">Enter New Password</label>
-                                            <input type="password"
-                                                [ngClass]="!newPassword?.errors?.['required'] || resetPasswordForm.controls['newPwd'].touched  ?'form-control field_error': 'form-control' "
-                                                formControlName="newPwd">
-                                            <div class=""
-                                                *ngIf="resetPasswordForm.controls['newPwd'].touched && resetPasswordForm.controls['newPwd'].invalid">
-                                                <div *ngIf="newPassword?.errors?.['required']" class="error-text">New
-                                                    Password is required.</div>
-
+                                            <input type="password" [ngClass]="newPassword?.invalid && (newPassword?.dirty || newPassword?.touched)  ?'form-control field_error': 'form-control' "
+                                            formControlName="newPwd">
+                                            <div *ngIf="newPassword?.invalid && (newPassword?.dirty || newPassword?.touched)" class="error-text">
+                                                <div *ngIf="newPassword?.errors?.['required']"> Old Password is required</div>
+                                                <div *ngIf="newPassword?.errors?.['minlength']">Minimum 8 characters. </div>
                                             </div>
-
                                         </div>
                                         <div class="col-md-6 mb-3 clr_light">
                                             <label class="mb-2">Re-Enter New Password</label>
-                                            <input type="password"
-                                                [ngClass]="!newPassword?.errors?.['required'] || resetPasswordForm.controls['confirmPwd'].touched ?'form-control field_error': 'form-control' "
-                                                formControlName="confirmPwd">
+                                            <input type="password"    [ngClass]="reEnterPassword?.errors?.['required'] && resetPasswordForm.controls['confirmPwd'].touched ?'form-control field_error': 'form-control' "
+                                            formControlName="confirmPwd">
                                             <span *ngIf="isMatch"> Passwords do not match.</span>
-                                            <div class=""
-                                                *ngIf="resetPasswordForm.controls['confirmPwd'].touched && resetPasswordForm.controls['confirmPwd'].invalid">
-                                                <div *ngIf="newPassword?.errors?.['required']" class="error-text">
-                                                    Re-Enter New Password is required.</div>
-
+                                            <div *ngIf="reEnterPassword?.invalid && (reEnterPassword?.dirty || reEnterPassword?.touched)" class="error-text">
+                                                <div *ngIf="reEnterPassword?.errors?.['required']"> Re-Enter password is required</div>
+                                                <div *ngIf="reEnterPassword?.errors?.['minlength']">Minimum 8 characters. </div>
+                                                <div *ngIf="reEnterPassword?.errors?.['mustMatch']">Passwords must match</div>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-4"></div>
-                                                <div class="col-lg-3 col-md-4 mb-3 mb-md-0"><button type="button"
-                                                        class="form_tab_btn w-100 form_btn_dark">Back</button></div>
-                                                <div class="col-lg-3 col-md-4"><button type="button"
-                                                        class="form_tab_btn w-100 theme_btn"
-                                                        (click)="matchpassword()">Update Password</button></div>
+                                                <div class="col-lg-3 col-md-4 mb-3 mb-md-0"><button type="button" class="form_tab_btn w-100 form_btn_dark">Back</button></div>
+                                                <div class="col-lg-3 col-md-4"><button type="button" class="form_tab_btn w-100 theme_btn" (click)="matchpassword()">Update Password</button></div>
                                             </div>
                                         </div>
                                     </form>

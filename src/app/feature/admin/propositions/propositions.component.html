@@ -1,0 +1,92 @@
+
+<div class="container" 
+style="border-radius: 20px;
+border: 1px solid #c9bcc4;
+box-shadow: 5px 5px;">
+
+    <h4 style="text-align: center;">Sellout</h4>           
+      <button type="button" class="btn btn-primary btn-lg" style="float: right;" (click)="saveSellers()">Save</button>
+    <table class="table" [width]="'100%'">
+    <thead>
+      <tr>
+        <th scope="col">Project Name</th>
+        <th scope="col">User</th>
+        <th scope="col">Sectors</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Status</th>
+        <th scope="col">Public</th>
+        <th scope="col">Featured</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of sellouts" (click)="selectedSellerRow(item)">
+        <th>{{item.projectName}}</th>
+        <td>{{item.userName}}</td>
+        <td>{{item.sectors}}</td>
+        <td>{{item.created_Date}}</td>
+        <td>
+            <select name="" id="" [(ngModel)]="item.status">
+                <option value="Pending"> Pending</option>
+                <option value="Rejected"> Rejected</option>
+                <option value="Approved"> Approved</option>
+                <option value="InProgress"> InProgress</option>
+            </select>
+        </td>
+        <td><input type="checkbox" [(ngModel)]="item.isPublic" (ngModelChange)="selectedSellerRow(item)"></td>
+        <td><input type="checkbox" [(ngModel)]="item.isFeatured" (ngModelChange)="selectedSellerRow(item)"></td>
+        <td>
+            <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/propotion-reivew',item.type,item.sellOut_Id]">View Details</button>
+            | 
+            <button type="button" class="btn btn-primary btn-sm">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+</div>
+
+<div class="container" 
+style="border-radius: 20px; margin-top: 20px;
+border: 1px solid #c9bcc4;
+box-shadow: 5px 5px;">
+
+    <h4 style="text-align: center;">BuyOut</h4>             
+    <button type="button" class="btn btn-primary btn-sm" style="float: right;" (click)="saveBuyers()">Save</button>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Location</th>
+        <th scope="col">User</th>
+        <th >Sectors</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Status</th>
+        <th scope="col">Public</th>
+        <th scope="col">Featured</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of buyouts" (click)="selectedBuyerRow(item)">
+        <td>{{item.businessLocation}}</td>
+        <td>{{item.userName}}</td>
+        <td style="width: 10%;">{{item.sectors}}</td>
+        <td>{{item.created_Date}}</td>
+        <td>
+            <select name="" id="" [(ngModel)]="item.status">
+                <option value="Pending"> Pending</option>
+                <option value="Rejected"> Rejected</option>
+                <option value="Approved"> Approved</option>
+                <option value="InProgress"> InProgress</option>
+            </select>
+        </td>
+        <td><input type="checkbox" [(ngModel)]="item.isPublic" (ngModelChange)="selectedBuyerRow(item)"></td>
+        <td><input type="checkbox" [(ngModel)]="item.isFeatured" (ngModelChange)="selectedBuyerRow(item)"></td>
+        <td>
+          <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/propotion-reivew',item.type,item.buyOut_Id]">View Details</button>
+            | 
+            <button type="button" class="btn btn-primary btn-sm">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+</div>
