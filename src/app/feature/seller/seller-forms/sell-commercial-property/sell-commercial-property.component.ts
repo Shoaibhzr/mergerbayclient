@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-sell-commercial-property',
   templateUrl: './sell-commercial-property.component.html',
-  styleUrls: ['../seller-forms.component.css']
+  styleUrls: ['./sell-commercial-property.component.css']
 })
 export class SellCommercialPropertyComponent implements OnInit {
 
@@ -75,6 +75,7 @@ export class SellCommercialPropertyComponent implements OnInit {
       //console.log($event);
     }
     form: FormGroup;
+    additonalForm: FormGroup;
     sellOut_Id: any;
   //#region Setups List Properies
   countries_list: any[];

@@ -69,8 +69,11 @@ export class PropositionsComponent implements OnInit {
   loadRecommendedDeals(){
     this._sellerService.readRecommendedDeals(this.userId).subscribe(res => {
       this.slides =  res;
-      console.log(this.slides);
     });
+  }
+  sum(value:any): number {
+    let val = value.split(',');
+    return val.reduce((a:any, b:any) => a + Number(b), 0);
   }
 
 

@@ -3,30 +3,36 @@
     <p class="text-center small">Enter your requirements and provide as much detail as you
         can.
     </p>
-    <ul class="nav mx-auto mb-4 nav-pills nav-fill detils-review-tabs" id="detail-review-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" [ngClass]="{'active':formTabSelected}" id="buy-out-details-tab" data-bs-toggle="tab" data-bs-target="#buy-out-details" type="button" role="tab" aria-controls="buy-out-details" [attr.aria-selected]="formTabSelected" (click)="this.formTabSelected=true">1 Enter Proposition
-                Details</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" [ngClass]="{'active':!formTabSelected}" id="buy-out-review-tab" data-bs-toggle="tab" data-bs-target="#buy-out-review" type="button" role="tab" aria-controls="buy-out-review" [attr.aria-selected]="formTabSelected" [disabled]="!this.form.valid" (click)="review()">2 Review and
-                Submit</button>
-        </li>
-    </ul>
+</div>
+
+<ul class="nav mx-auto mb-4 nav-pills nav-fill detils-review-tabs mw-100 px-md-5" id="detail-review-tab" role="tablist">
+    <li class="nav-item col-md-4 px-0 w-25" role="presentation">
+        <button class="nav-link" [ngClass]="{'active':formTabSelected}" id="buy-out-details-tab" data-bs-toggle="tab" data-bs-target="#buy-out-details" type="button" role="tab" aria-controls="buy-out-details" [attr.aria-selected]="formTabSelected" (click)="this.formTabSelected=true">1 Enter Proposition
+            Details</button>
+    </li>
+    <li class="nav-item col-md-4 px-0 w-25" role="presentation">
+        <button class="nav-link" [ngClass]="{'active':!formTabSelected}" id="buy-out-review-tab" data-bs-toggle="tab" data-bs-target="#buy-out-review" type="button" role="tab" aria-controls="buy-out-review" [attr.aria-selected]="formTabSelected" [disabled]="!this.form.valid" (click)="review()">2 Additional Details
+        </button>
+    </li>
+    <li class="nav-item col-md-4 px-0 w-25" role="presentation">
+        <button class="nav-link" [ngClass]="{'active':!formTabSelected}" id="buy-out-review-tab" data-bs-toggle="tab" data-bs-target="#buy-out-review" type="button" role="tab" aria-controls="buy-out-review" [attr.aria-selected]="formTabSelected" [disabled]="!this.form.valid" (click)="review()">3 Review and
+            Submit</button>
+    </li>
+</ul>
+<div class="form_inner mx-auto">
     <div class="tab-content detils-review-content" id="detail-review-tabContent">
         <div class="tab-pane fade" [ngClass]="{'show active' : formTabSelected}" id="com-property-details" role="tabpanel" aria-labelledby="com-property-details-tab">
             <form [formGroup]="form">
                 <div class="mb-3">
                     <label class="form-label">Project Name<span>*</span></label>
                     <div class="position-relative field_wrap">
-                        <input type="text" name="so_project_name" 
-                        class="form-control" [ngClass]="{'field_error': validate('projectName')}" formControlName="projectName">
+                        <input type="text" name="so_project_name" class="form-control" [ngClass]="{'field_error': validate('projectName')}" formControlName="projectName">
                         <div class="filed_tooltip">
                             <div class="tooltip__arrow"></div>
-                             Name of your Project
+                            Name of your Project
                         </div>
                     </div>
-                    <div *ngIf="validate('projectName')" id="error" class="error-text">  
+                    <div *ngIf="validate('projectName')" id="error" class="error-text">
                         <div *ngIf="form.get('projectName')?.errors?.['required']">
                             Project Name Required
                         </div>
@@ -35,9 +41,7 @@
                 <div class="mb-3">
                     <label class="form-label">Your Business Location / Headquarters<span>*</span></label>
                     <div class="position-relative field_wrap">
-                        <ng-select 
-                        [ngClass]="{'field_error':validate('businessLocation_Id')}" formControlName="businessLocation_Id"
-                        [class]="bo_country" name="bo_business_loc" id="bo_business_loc" (change)="c_bo_country($event, 'bo_country')">
+                        <ng-select [ngClass]="{'field_error':validate('businessLocation_Id')}" formControlName="businessLocation_Id" [class]="bo_country" name="bo_business_loc" id="bo_business_loc" (change)="c_bo_country($event, 'bo_country')">
                             <ng-option *ngFor="let country of countries_list" [value]="country.country_Id">
                                 {{country.name}}</ng-option>
                         </ng-select>
@@ -55,14 +59,13 @@
                 <div class="mb-3">
                     <label class="form-label">Type of Property <span>*</span></label>
                     <div class="position-relative field_wrap">
-                        <ng-select name="contract_druration" id="contract_druration"
-                        [ngClass]="{'field_error':validate('property_Id')}" formControlName="property_Id">
+                        <ng-select name="contract_druration" id="contract_druration" [ngClass]="{'field_error':validate('property_Id')}" formControlName="property_Id">
                             <ng-option *ngFor="let item of properties_list" [value]="item.property_Id">
                                 {{item.name}}</ng-option>
                         </ng-select>
                         <div class="filed_tooltip">
                             <div class="tooltip__arrow"></div>
-                                Select Property Type
+                            Select Property Type
                         </div>
                     </div>
                     <div *ngIf="validate('property_Id')" id="error" class="error-text">
@@ -75,7 +78,7 @@
                     <label class="form-label d-block d-md-inline-block me-md-3">Year of Completion<span>*</span></label>
                     <div class="position-relative input_year_label">
                         <div class="position-relative field_wrap">
-                            <ng-select name="year_establishment"  [ngClass]="{'field_error':validate('year_Id')}" formControlName="year_Id">
+                            <ng-select name="year_establishment" [ngClass]="{'field_error':validate('year_Id')}" formControlName="year_Id">
                                 <ng-option *ngFor="let year_establishment of year_establishments" [value]="year_establishment.year">
                                     {{year_establishment.year}}</ng-option>
                             </ng-select>
@@ -96,10 +99,7 @@
                     <label class="form-label me-3">Value of Property<span>*</span></label>
                     <div class="range_selector_wrap align-items-center d-flex container-fluid position-relative field_wrap">
                         <label class="mb-0">AED | 25 Millions</label> &nbsp;
-                        <ngx-slider class="my-0 mx-3"
-                        [ngClass]="{'field_error': validate('propertyValue')}"
-                        formControlName="propertyValue"
-                        [options]="options"></ngx-slider> &nbsp;
+                        <ngx-slider class="my-0 mx-3" [ngClass]="{'field_error': validate('propertyValue')}" formControlName="propertyValue" [options]="options"></ngx-slider> &nbsp;
                         <label class="mb-0">1 Billion</label>
                         <div class="filed_tooltip">
                             <div class="tooltip__arrow"></div>
@@ -116,7 +116,7 @@
                         <input type="text" class="form-control" [ngClass]="{'field_error': validate('landArea')}" formControlName="landArea" placeholder="Enter Land Area in Sq.Ft">
                         <div class="filed_tooltip">
                             <div class="tooltip__arrow"></div>
-                           Enter Land Area
+                            Enter Land Area
                         </div>
                     </div>
                     <div *ngIf="validate('landArea')" id="error" class="error-text">
@@ -131,18 +131,15 @@
                 <div class="mb-3">
                     <label class="form-label me-3">Built-Up Area <span>*</span></label>
                     <div class="position-relative field_wrap">
-                        <input type="text" class="form-control"
-                        [ngClass]="{'field_error': validate('builtUpArea')}"
-                        formControlName="builtUpArea"
-                        placeholder="Enter Built-Up Area in Sq.Ft">
+                        <input type="text" class="form-control" [ngClass]="{'field_error': validate('builtUpArea')}" formControlName="builtUpArea" placeholder="Enter Built-Up Area in Sq.Ft">
                         <div class="filed_tooltip">
                             <div class="tooltip__arrow"></div>
-                             Built Up Area
+                            Built Up Area
                         </div>
                     </div>
                     <div *ngIf="validate('builtUpArea')" id="error" class="error-text">
                         <div *ngIf="form.get('builtUpArea')?.errors?.['required']">
-                             Enter Built Up Area
+                            Enter Built Up Area
                         </div>
                         <div *ngIf="form.get('builtUpArea')?.errors?.['NaN']">
                             Enter a Valid Number
@@ -151,22 +148,23 @@
                 </div>
                 <div class="mb-3">
                     <div class="d-inline-flex position-relative field_wrap">
-                        <label class="form-label d-block d-md-inline-block me-md-3 mb-0">Do you have a contract with an operator? <span>*</span></label>
+                        <label class="form-label d-block d-md-inline-block me-md-3 mb-0">Do you have a contract with an
+                            operator? <span>*</span></label>
                         <div class="form-check form-check-inline mb-0">
                             <label class="form-check-label" for="bank_depts_y">
-                                <input class="form-check-input" type="radio" formControlName="hasContract"  id="has_contract_y" [value]="true">
+                                <input class="form-check-input" type="radio" formControlName="hasContract" id="has_contract_y" [value]="true">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check form-check-inline mb-0">
                             <label class="form-check-label" for="bank_depts_n">
-                                <input class="form-check-input" type="radio" formControlName="hasContract"  id="has_contract_n" [value]="false">
+                                <input class="form-check-input" type="radio" formControlName="hasContract" id="has_contract_n" [value]="false">
                                 No
                             </label>
                         </div>
                         <div class="filed_tooltip">
                             <div class="tooltip__arrow"></div>
-                             Select Yes /  No 
+                            Select Yes / No
                         </div>
                     </div>
                     <div *ngIf="(submitted && form.get('hasContract')?.errors)" id="error" class="error-text">
@@ -176,8 +174,7 @@
                 <div class="mb-3">
                     <label class="form-label">Duration of the Contract <span>*</span></label>
                     <div class="position-relative field_wrap">
-                        <ng-select name="contract_druration" id="contract_druration" 
-                        [ngClass]="{'field_error':validate('duration_Id')}" formControlName="duration_Id">
+                        <ng-select name="contract_druration" id="contract_druration" [ngClass]="{'field_error':validate('duration_Id')}" formControlName="duration_Id">
                             <ng-option *ngFor="let item of contractDurations_list" [value]="item.duration_Id">
                                 {{item.name}} Year</ng-option>
                         </ng-select>
@@ -195,16 +192,15 @@
                 <div class="mb-3">
                     <label class="form-label me-3">Annual Gross Income <span>*</span></label>
                     <div class="position-relative field_wrap">
-                        <input type="text" class="form-control" [ngClass]="{'field_error': validate('annualGrossIncome')}"
-                         formControlName="annualGrossIncome">
+                        <input type="text" class="form-control" [ngClass]="{'field_error': validate('annualGrossIncome')}" formControlName="annualGrossIncome">
                         <div class="filed_tooltip">
                             <div class="tooltip__arrow"></div>
-                           Your Annual Gross Income
+                            Your Annual Gross Income
                         </div>
                     </div>
                     <div *ngIf="validate('annualGrossIncome')" id="error" class="error-text">
                         <div *ngIf="form.get('annualGrossIncome')?.errors?.['required']">
-                           Enter Annual Gross Income
+                            Enter Annual Gross Income
                         </div>
                         <div *ngIf="form.get('annualGrossIncome')?.errors?.['NaN']">
                             Enter a Valid Amount
@@ -213,7 +209,8 @@
                 </div>
                 <div class="mb-3">
                     <div class="d-md-inline-flex position-relative field_wrap">
-                        <label class="form-label d-block d-md-inline-block me-md-3 mb-0">Do you have a valuation report? <span>*</span></label>
+                        <label class="form-label d-block d-md-inline-block me-md-3 mb-0">Do you have a valuation report?
+                            <span>*</span></label>
                         <div class="form-check form-check-inline mb-0">
                             <label class="form-check-label" for="valuation_report_y">
                                 <input class="form-check-input" type="radio" formControlName="isValuationReport" id="valuation_report_y" [value]="true">
@@ -238,13 +235,13 @@
                 <div class="mb-3 sub_cat_wrap">
                     <label class="form-label">Your role in the Transaction<span>*</span></label>
                     <div class="position-relative field_wrap">
-                        <ng-select (change)="load_Mendate($event)"  name="transaction_role" [ngClass]="{'field_error':validate('transactionRole_Id')}"  formControlName="transactionRole_Id">
+                        <ng-select (change)="load_Mendate($event)" name="transaction_role" [ngClass]="{'field_error':validate('transactionRole_Id')}" formControlName="transactionRole_Id">
                             <ng-option *ngFor="let transaction_role of transaction_roles" [value]="transaction_role.role_Id">
                                 {{transaction_role.name}}</ng-option>
                         </ng-select>
                         <div class="filed_tooltip">
                             <div class="tooltip__arrow"></div>
-                             Select Transaction Role
+                            Select Transaction Role
                         </div>
                     </div>
                     <div *ngIf="validate('transactionRole_Id')" id="error" class="error-text">
@@ -259,7 +256,7 @@
                                     Mandate<span>*</span></label>
                                 <div class="form-check form-check-inline mb-0">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" formControlName="isMendate"  id="mandate_y" [value]="true">
+                                        <input class="form-check-input" type="radio" formControlName="isMendate" id="mandate_y" [value]="true">
                                         Yes
                                     </label>
                                 </div>
@@ -281,17 +278,17 @@
                     <div class="position-relative field_wrap">
                         <textarea class="form-control" [ngClass]="{'field_error':validate('description')}" formControlName="description" name="so_additional_description" placeholder="Brief, competition, and market size etc."></textarea>
                         <div *ngIf="form.get('description')?.errors" class="filed_tooltip">
-                            <div class="tooltip__arrow"></div>   
-                            Detailed Description 
+                            <div class="tooltip__arrow"></div>
+                            Detailed Description
                         </div>
                     </div>
                     <div *ngIf="validate('description')" id="error" class="error-text">
                         <div *ngIf="form.get('description')?.errors?.['required']">
                             Enter Description
-                            </div> 
-                           <div *ngIf="form.get('description')?.errors?.['minlength']">
+                        </div>
+                        <div *ngIf="form.get('description')?.errors?.['minlength']">
                             Description Must be greater than 10 words
-                           </div>  
+                        </div>
                     </div>
                 </div>
                 <div class="form-check mb-3">
@@ -305,25 +302,282 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 mb-2">
-                        <button type="button" class="form_tab_btn form_btn_bordered" (click)="cancel()" >Cancel</button>
+                        <button type="button" class="form_tab_btn form_btn_bordered" (click)="cancel()">Cancel</button>
                     </div>
                     <div class="col-sm-4 mb-2">
-                        <button type="button" class="form_tab_btn form_btn_dark" (click)="SaveForm()" *ngIf="false">Save as
+                        <button type="button" class="form_tab_btn form_btn_dark" (click)="SaveForm()" *ngIf="false">Save
+                            as
                             Draft</button>
                     </div>
                     <div class="col-sm-4 mb-2">
-                        <button type="button" class="form_tab_btn theme_btn" (click)="review()" >Next</button>
+                        <button type="button" class="form_tab_btn theme_btn" (click)="review()">Next</button>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="tab-pane fade"  [ngClass]="{'show active' : !formTabSelected}" id="buy-out-review" role="tabpanel" aria-labelledby="buy-out-review-tab">
+
+        <!-- additional info -->
+        <div class="tab-pane fade" id="com-property-details" role="tabpanel" aria-labelledby="com-property-details-tab">
+            <form [formGroup]="additonalForm">
+                <div class="mb-3">
+                    <label class="form-label">Project Name<span>*</span></label>
+                    <div class="position-relative field_wrap">
+                        <input type="text" name="so_project_name" class="form-control field_error">
+                        <div class="filed_tooltip">
+                            <div class="tooltip__arrow"></div>
+                            Name of your Project
+                        </div>
+                    </div>
+                    <div id="error" class="error-text">
+                        <div>
+                            Project Name Required
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-inline-flex position-relative field_wrap">
+                        <label class="form-label d-block d-md-inline-block me-md-3 mb-0">Do you have a contract with an
+                            operator? <span>*</span></label>
+                        <div class="form-check form-check-inline mb-0">
+                            <label class="form-check-label" for="bank_depts_ya">
+                                <input class="form-check-input" type="radio" id="has_contract_ya" [value]="true">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline mb-0">
+                            <label class="form-check-label" for="bank_depts_na">
+                                <input class="form-check-input" type="radio" id="has_contract_na" [value]="false">
+                                No
+                            </label>
+                        </div>
+                        <div class="filed_tooltip">
+                            <div class="tooltip__arrow"></div>
+                            Select Yes / No
+                        </div>
+                    </div>
+                    <div class="sub_selection_sec">
+                        <div class="mb-3">
+                            <div class="sub_selection_inner mt-2">
+                                <div class="position-relative input_percent_sign field_wrap">
+                                    <input type="file" class="form-control field_error d-none" id="contact_attach" placeholder="Attach your Contact">
+                                    <label for="contact_attach" class="form-control file_placeholder d-flex align-items-center">Attach your
+                                        Contact</label>
+                                    <span>
+                                        <img src="../../../../../assets/images/attach.png" class="img-fluid" alt="Attach">
+                                    </span>
+                                    <div class="filed_tooltip">
+                                        <div class="tooltip__arrow"></div> Error Msg Here
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="error" class="error-text">
+                        Please Select Value
+                    </div>
+                </div>
+                <div class="mb-3 d-flex">
+                    <div class="col-md-8 clr_light">
+                        <div class="d-flex align-items-center">
+                            <div class="profile_image_wrap d-flex align-items-center justify-content-center me-4 p-3">
+                                <img src="../../../../../assets/images/bank-statement.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="clr_light flex-grow-1">
+                                <div class="d-flex align-items-cener justify-content-between">
+                                    Contract with Operator File
+                                    <button class="btn p-0 shadow-none">
+                                        <img src="../../../../../assets/images/cancel.png" class="img-fluid" alt="Cancel">
+                                    </button>
+                                </div>
+                                <div class="profile_upload_bar position-relative overflow-hidden my-2">
+                                    <span style="width: 100%;"></span>
+                                </div>
+                                <small>100% Completed</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Annual Gross Income <span>*</span></label>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <div class="position-relative field_wrap"><input type="text" class="form-control">
+                                <div class="filed_tooltip">
+                                    <div class="tooltip__arrow"></div> Minumum Valuation Preference
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ps-3">
+                            <label>Millions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-md-inline-flex position-relative field_wrap">
+                        <label class="form-label d-block d-md-inline-block me-md-3 mb-0">Do you have a valuation report?
+                            <span>*</span></label>
+                        <div class="form-check form-check-inline mb-0">
+                            <label class="form-check-label" for="valuation_report_ya">
+                                <input class="form-check-input" type="radio" id="valuation_report_ya" [value]="true">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline mb-0">
+                            <label class="form-check-label" for="valuation_report_na">
+                                <input class="form-check-input" type="radio" id="valuation_report_na" [value]="false">
+                                No
+                            </label>
+                        </div>
+                        <div class="filed_tooltip">
+                            <div class="tooltip__arrow"></div>
+                            Select Valuation Report
+                        </div>
+                    </div>
+                    <div class="sub_selection_sec">
+                        <div class="mb-3">
+                            <div class="sub_selection_inner mt-2">
+                                <div class="position-relative input_percent_sign field_wrap">
+                                    <input type="file" class="form-control field_error d-none" id="contact_attach" placeholder="Attach your Contact">
+                                    <label for="contact_attach" class="form-control file_placeholder d-flex align-items-center">Attach your
+                                        Contact</label>
+                                    <span>
+                                        <img src="../../../../../assets/images/attach.png" class="img-fluid" alt="Attach">
+                                    </span>
+                                    <div class="filed_tooltip">
+                                        <div class="tooltip__arrow"></div> Error Msg Here
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="error" class="error-text">
+                        Please Select Value
+                    </div>
+                </div>
+                <div class="mb-3 d-flex">
+                    <div class="col-md-8 clr_light">
+                        <div class="d-flex align-items-center">
+                            <div class="profile_image_wrap d-flex align-items-center justify-content-center me-4 p-3">
+                                <img src="../../../../../assets/images/valuation.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="clr_light flex-grow-1">
+                                <div class="d-flex align-items-cener justify-content-between">
+                                    My Valuation Report File.
+                                    <button class="btn p-0 shadow-none">
+                                        <img src="../../../../../assets/images/cancel.png" class="img-fluid" alt="Cancel">
+                                    </button>
+                                </div>
+                                <div class="profile_upload_bar position-relative overflow-hidden my-2">
+                                    <span style="width: 86%;"></span>
+                                </div>
+                                <small>86% Completed</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 sub_cat_wrap">
+                    <label class="form-label">Your role in the Transaction<span>*</span></label>
+                    <div class="position-relative field_wrap">
+                        <ng-select (change)="load_Mendate($event)" name="transaction_role" [ngClass]="{'field_error':validate('transactionRole_Id')}" formControlName="transactionRole_Id">
+                            <ng-option *ngFor="let transaction_role of transaction_roles" [value]="transaction_role.role_Id">
+                                {{transaction_role.name}}</ng-option>
+                        </ng-select>
+                        <div class="filed_tooltip">
+                            <div class="tooltip__arrow"></div>
+                            Select Transaction Role
+                        </div>
+                    </div>
+                    <div *ngIf="validate('transactionRole_Id')" id="error" class="error-text">
+                        <div *ngIf="form.get('transactionRole_Id')?.errors?.['required']">
+                            Please Select Transaction Role
+                        </div>
+                    </div>
+                    <div class="sub_selection_sec" *ngIf="showMendate">
+                        <div class="mb-3">
+                            <div class="d-md-flex align-items-center pt-4">
+                                <label class="form-label d-block d-md-inline-block me-md-3">Do you have a
+                                    Mandate<span>*</span></label>
+                                <div class="form-check form-check-inline mb-0">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" formControlName="isMendate" id="mandate_y" [value]="true">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline mb-0">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" formControlName="isMendate" id="mandate_n" [value]="false">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                            <div *ngIf="(submitted && form.get('isMendate')?.errors)" id="error" class="error-text">
+                                Please Select Value
+                            </div>
+                        </div>
+                    </div>
+                    <div class="position-relative input_percent_sign field_wrap"  *ngIf="showMendate">
+                        <input type="file" id="mandateAttach" placeholder="Attach your Mandate" class="form-control field_error d-none">
+                        <label for="mandateAttach" class="form-control file_placeholder d-flex align-items-center">Attach your Mandate</label>
+                        <span>
+                            <img src="../../../../../assets/images/attach.png" alt="Attach" class="img-fluid">
+                        </span>
+                        <div class="filed_tooltip">
+                            <div class="tooltip__arrow"></div> Error Msg Here
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Additional Description<span>*</span></label>
+                    <div class="position-relative field_wrap">
+                        <textarea class="form-control" [ngClass]="{'field_error':validate('description')}" formControlName="description" name="so_additional_description" placeholder="Brief, competition, and market size etc."></textarea>
+                        <div *ngIf="form.get('description')?.errors" class="filed_tooltip">
+                            <div class="tooltip__arrow"></div>
+                            Detailed Description
+                        </div>
+                    </div>
+                    <div *ngIf="validate('description')" id="error" class="error-text">
+                        <div *ngIf="form.get('description')?.errors?.['required']">
+                            Enter Description
+                        </div>
+                        <div *ngIf="form.get('description')?.errors?.['minlength']">
+                            Description Must be greater than 10 words
+                        </div>
+                    </div>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" formControlName="termsAndConditions" type="checkbox" value="" id="agree_check">
+                    <label class="form-check-label" for="agree_check">
+                        Agreed To Terms and Conditions *
+                    </label>
+                    <div id="error" class="error-text" *ngIf="submitted && form.get('termsAndConditions')?.value===false ">
+                        Please Agree to Terms and Conditions
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mb-2">
+                        <button type="button" class="form_tab_btn form_btn_bordered" (click)="cancel()">Cancel</button>
+                    </div>
+                    <div class="col-sm-4 mb-2">
+                        <button type="button" class="form_tab_btn form_btn_dark" (click)="SaveForm()" *ngIf="false">Save
+                            as
+                            Draft</button>
+                    </div>
+                    <div class="col-sm-4 mb-2">
+                        <button type="button" class="form_tab_btn theme_btn" (click)="review()">Next</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- additional info /-->
+
+        <div class="tab-pane fade" [ngClass]="{'show active' : !formTabSelected}" id="buy-out-review" role="tabpanel" aria-labelledby="buy-out-review-tab">
             <div class="row mb-4">
                 <div class="col-md-6 review_txt_opt">
                     Project Name
                 </div>
                 <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
-                    {{_data.projectName}}  
+                    {{_data.projectName}}
                 </div>
             </div>
             <div class="row mb-4">
@@ -336,7 +590,7 @@
             </div>
             <div class="row mb-4">
                 <div class="col-md-6 review_txt_opt">
-                    Property of Type 
+                    Property of Type
                 </div>
                 <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
                     {{_data.property}}
@@ -379,7 +633,7 @@
                     Do you have Contract With an Operator?
                 </div>
                 <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
-                    {{_data.hasContract? 'Yes': 'No'}}  
+                    {{_data.hasContract? 'Yes': 'No'}}
                 </div>
             </div>
             <div class="row mb-4">
@@ -410,10 +664,10 @@
                 <div class="col-md-6 review_txt_opt">
                     Your role in the Transaction
                 </div>
-                   <div class="col-md-6 review_txt_sel">
-                       {{_data.role}}
-                   </div>
-               </div>
+                <div class="col-md-6 review_txt_sel">
+                    {{_data.role}}
+                </div>
+            </div>
             <div class="row mb-4" *ngIf="showMendate">
                 <div class="col-md-6 review_txt_opt">
                     <div class="sub_selection_sec">
@@ -437,7 +691,7 @@
             <div class="row">
                 <div class="col-md-12 review_txt_opt">
                     <div class="review_txt_txtarea">
-                       {{_data.description}}
+                        {{_data.description}}
                     </div>
                 </div>
                 <div class="col-md-12 mt-4">

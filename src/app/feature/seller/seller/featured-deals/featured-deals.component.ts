@@ -12,6 +12,9 @@ import { SellerService } from 'src/app/shared/services/seller/seller.service';
 export class SellFeaturedDealsComponent implements OnInit {
 
   formTypeCommercial = FormTypeEnum.CommercialProperty;
+  totalRevenue = 0;
+  totalEbitda = 0;
+
   slides:SP_SELLOUTS[] = [];
   slideConfig = {
     centerMode: true,
@@ -62,5 +65,10 @@ export class SellFeaturedDealsComponent implements OnInit {
     this._sellerService.readFeaturedSellOuts(params).subscribe(res => {
       this.slides =  res;
     });
+  }
+
+  sum(value:any): number {
+    let val = value.split(',');
+    return val.reduce((a:any, b:any) => a + Number(b), 0);
   }
 }
