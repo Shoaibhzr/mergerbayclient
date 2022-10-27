@@ -7,6 +7,7 @@ import { PersonalCompanyInfoComponent } from './profile/personal-company-info/pe
 import { PropositionsComponent } from './profile/propositions/propositions.component';
 import { PropotionReviewComponent } from './profile/propotion-review/propotion-review.component';
 import { SettingsComponent } from './profile/settings/settings.component';
+import { BuyFeaturedDealsComponent } from './buyer/buyer/featured-deals/featured-deals.component';
 
 const routes: Routes = [
   {
@@ -75,6 +76,11 @@ const routes: Routes = [
     path: 'propotion-reivew/:type/:formId',
     component: PropotionReviewComponent,
   },
+  {
+    path: 'deals',
+    component: BuyFeaturedDealsComponent,
+  },
+
 
 ];
 

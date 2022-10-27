@@ -1,7 +1,7 @@
 <ngx-slick-carousel class="carousel buy_slider animate__fadeInUp" #slickModal="slick-carousel"
 [config]="slideConfig">
 <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-    <!-- <div class="deals_slide_wrap mx-auto" [ngClass]="slide.type == 'sold' ? 'sold_deal' : 'acq_deal'"> -->
+    <!-- <div class="deals_slide_wrap mx-auto" [ngClass]="slide.type == 'sold' ? 'sold_deal' : 'acq_deal'">  -->
         <div class="deals_slide_wrap mx-auto acq_deal">
         <div class="deal_slide_header p-3">
             {{slide.countriesInterested}} - {{slide.city}}
@@ -71,3 +71,29 @@
     </div>
 </div>
 </ngx-slick-carousel>
+
+<section class="banner_inner position-relative">
+    <div class="container position-relative">
+        <div class="form_fields_wrap mw-100 bg-white shadow_sec py-4 py-md-5 mt-4">
+            <div class="container px-lg-4">
+                <div class="row">
+                    <div class="col-md-11 mx-auto">
+                        <div class="form_inner mx-auto mw-100">
+                            <h4 class="text-center mb-4"><b>Deal Room</b></h4>
+                            <h4 class="mb-4 mb-md-5"><b>Deal Documents</b></h4>
+                        </div>
+                    </div>
+                    <div class="col-md-5 mx-auto">
+                        <h4 class="mb-4"><b>You have added - Documents</b></h4>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                        <input type="file" id="upload_file" class="d-none" (change)="dealDocs($event)">
+                        <label class="form_tab_btn theme_btn" for="upload_file">+ ADD FILES</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

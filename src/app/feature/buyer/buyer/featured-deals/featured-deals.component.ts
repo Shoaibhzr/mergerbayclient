@@ -3,6 +3,8 @@ import { FormTypeEnum } from 'src/app/shared/enums/form-type';
 import { SearchParams } from 'src/app/shared/models/SearchParams';
 import { SP_BUYOUTS } from 'src/app/shared/models/SP_BUYOUTS';
 import { SellerService } from 'src/app/shared/services/seller/seller.service';
+import { UserAuthService } from 'src/app/shared/services/user/user.auth';
+
 
 @Component({
   selector: 'app-buy-featured-deals',
@@ -12,6 +14,9 @@ import { SellerService } from 'src/app/shared/services/seller/seller.service';
 export class BuyFeaturedDealsComponent implements OnInit {
 
   formTypeCommercial = FormTypeEnum.CommercialProperty;
+  docsFormData:FormData;
+  blobDocsAddress:string='https://mergerbayblob.blob.core.windows.net/dealroom/';
+  profileDealDocs:string='';
   slides:SP_BUYOUTS[] = [];
   slideConfig = {
     centerMode: true,
@@ -50,7 +55,10 @@ export class BuyFeaturedDealsComponent implements OnInit {
     ]
   };
 
-  constructor(private _sellerService:SellerService) { }
+  constructor(private _sellerService:SellerService,private userAuth:UserAuthService,) {
+
+    this.docsFormData=new FormData();
+   }
 
   ngOnInit(): void {
     this.loadFeaturedData();
@@ -64,5 +72,20 @@ export class BuyFeaturedDealsComponent implements OnInit {
     this._sellerService.readFeaturedBuyOuts(params).subscribe(res => {
       this.slides =  res;
     })
+  }
+
+  dealDocs(event: any):void{
+    //this.docsFormData.delete;
+    this.docsFormData.append('profile',event.target.files[0]);
+    this.userAuth
+    .uploadDealDocs(this.docsFormData)
+    .subscribe(
+      (data:any) => {
+       console.log(data);
+       this.profileDealDocs=this.blobDocsAddress+data['fileName'];
+      },
+      (error) => {
+      }
+    );  
   }
 }

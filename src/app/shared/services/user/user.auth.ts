@@ -77,4 +77,9 @@ export class UserAuthService {
   userSignIn(obj:any) {
     return this.http.post(this.baseUrl + `Authentication/login`, obj);
   }
+
+  uploadDealDocs(obj:any) {
+    console.log(obj);
+    return this.http.post(this.baseUrl + `UserProfile/save/DealDoc`, obj);
+  }
 }
