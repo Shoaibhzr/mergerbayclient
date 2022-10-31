@@ -11,6 +11,7 @@ import { SellerInvestmentComponent } from './seller-investment/seller-investment
 import { SellMergersAcquisitionsComponent } from './sell-mergers-acquisitions/sell-mergers-acquisitions.component';
 import { SellCommercialPropertyComponent } from './sell-commercial-property/sell-commercial-property.component';
 import { SellerSubsectorsComponent } from './subsectors/subsectors.component';
+import { AdditionalDetailsComponent } from './additional-details/additional-details.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { SellerSubsectorsComponent } from './subsectors/subsectors.component';
     SellerInvestmentComponent,
     SellMergersAcquisitionsComponent,
     SellCommercialPropertyComponent,
-    SellerSubsectorsComponent
+    SellerSubsectorsComponent,
+    AdditionalDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdditionalDetailsComponent } from './additional-details/additional-details.component';
 import { SellerFormsComponent } from './seller-forms.component';
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'commercial-property',
     component: SellerFormsComponent
+  },
+  {
+    path: 'details',
+    component: AdditionalDetailsComponent
   },
 ];
 

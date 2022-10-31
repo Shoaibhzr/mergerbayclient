@@ -1,0 +1,424 @@
+<!-- banner -->
+<section class="banner_inner position-relative">
+    <div class="container position-relative">
+        <div class="form_fields_wrap shadow-none bg-transparent">
+            <div class="container form_fields_wrap bg-white shadow_sec py-4 mt-4">
+                <div class="form_inner mx-auto">
+                    <h4 class="text-center">Commercial Property</h4>
+                    <p class="text-center small">Enter your requirements and provide as much detail as you
+                        can.
+                    </p>
+                </div>
+
+                <ul class="nav mx-auto mb-4 nav-pills nav-fill detils-review-tabs mw-100 px-md-5" id="detail-review-tab" role="tablist">
+                    <li class="nav-item col-md-4 px-0 w-25" role="presentation">
+                        <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" [attr.aria-selected]="formTabSelected">1 Already Added Details</button>
+                    </li>
+                    <li class="nav-item col-md-4 px-0 w-25" role="presentation">
+                        <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" [attr.aria-selected]="formTabSelected">2 Additional Details
+                        </button>
+                    </li>
+                    <li class="nav-item col-md-4 px-0 w-25" role="presentation">
+                        <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" [attr.aria-selected]="formTabSelected">3 Review and Submit</button>
+                    </li>
+                </ul>
+                <div class="form_inner mx-auto">
+                    <div class="tab-content detils-review-content" id="detail-review-tabContent">
+                        <div class="tab-pane fade active show" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Project Name
+                                </div>
+                                <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
+                                    Lorem ipsum dolor sit amet
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Do you have a contract with an operator
+                                </div>
+                                <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
+                                    Lorem ipsum dolor sit amet
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Annual Gross Income
+                                </div>
+                                <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
+                                    Lorem ipsum dolor sit amet
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Do you have a valuation report?
+                                </div>
+                                <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
+                                    Lorem ipsum dolor sit amet
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Your role in the Transaction
+                                </div>
+                                <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
+                                    Lorem ipsum dolor sit amet
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Additional Description
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 review_txt_opt">
+                                    <div class="review_txt_txtarea">
+                                        Lorem ipsum dolor sit amet
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <div class="row">
+                                        <div class="col-sm-4 mb-2">
+                                            <button type="button" class="form_tab_btn form_btn_bordered" (click)="this.formTabSelected=true">Back</button>
+                                        </div>
+                                        <div class="col-sm-4 mb-2">
+
+                                        </div>
+                                        <div class="col-sm-4 mb-2">
+                                            <button type="button" class="form_tab_btn theme_btn">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- additional info -->
+                        <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                            <form [formGroup]="additonalForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Project Name<span>*</span></label>
+                                    <div class="position-relative field_wrap">
+                                        <input type="text" name="so_project_name" class="form-control field_error">
+                                        <div class="filed_tooltip">
+                                            <div class="tooltip__arrow"></div>
+                                            Name of your Project
+                                        </div>
+                                    </div>
+                                    <div id="error" class="error-text">
+                                        <div>
+                                            Project Name Required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-inline-flex position-relative field_wrap">
+                                        <label class="form-label d-block d-md-inline-block me-md-3 mb-0">Do you have a contract with an
+                                            operator? <span>*</span></label>
+                                        <div class="form-check form-check-inline mb-0">
+                                            <label class="form-check-label" for="bank_depts_ya">
+                                                <input class="form-check-input" type="radio" id="has_contract_ya" [value]="true">
+                                                Yes
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline mb-0">
+                                            <label class="form-check-label" for="bank_depts_na">
+                                                <input class="form-check-input" type="radio" id="has_contract_na" [value]="false">
+                                                No
+                                            </label>
+                                        </div>
+                                        <div class="filed_tooltip">
+                                            <div class="tooltip__arrow"></div>
+                                            Select Yes / No
+                                        </div>
+                                    </div>
+                                    <div class="sub_selection_sec">
+                                        <div class="mb-3">
+                                            <div class="sub_selection_inner mt-2">
+                                                <div class="position-relative input_percent_sign field_wrap">
+                                                    <input type="file" class="form-control field_error d-none" id="contact_attach" placeholder="Attach your Contact">
+                                                    <label for="contact_attach" class="form-control file_placeholder d-flex align-items-center">Attach your
+                                                        Contact</label>
+                                                    <span>
+                                                        <img src="../../../../../assets/images/attach.png" class="img-fluid" alt="Attach">
+                                                    </span>
+                                                    <div class="filed_tooltip">
+                                                        <div class="tooltip__arrow"></div> Error Msg Here
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="error" class="error-text">
+                                        Please Select Value
+                                    </div>
+                                </div>
+                                <div class="mb-3 d-flex">
+                                    <div class="col-md-8 clr_light">
+                                        <div class="d-flex align-items-center">
+                                            <div class="profile_image_wrap d-flex align-items-center justify-content-center me-4 p-3">
+                                                <img src="../../../../../assets/images/bank-statement.png" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="clr_light flex-grow-1">
+                                                <div class="d-flex align-items-cener justify-content-between">
+                                                    Contract with Operator File
+                                                    <button class="btn p-0 shadow-none">
+                                                        <img src="../../../../../assets/images/cancel.png" class="img-fluid" alt="Cancel">
+                                                    </button>
+                                                </div>
+                                                <div class="profile_upload_bar position-relative overflow-hidden my-2">
+                                                    <span style="width: 100%;"></span>
+                                                </div>
+                                                <small>100% Completed</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Annual Gross Income <span>*</span></label>
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <div class="position-relative field_wrap"><input type="text" class="form-control">
+                                                <div class="filed_tooltip">
+                                                    <div class="tooltip__arrow"></div> Minumum Valuation Preference
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ps-3">
+                                            <label>Millions</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-md-inline-flex position-relative field_wrap">
+                                        <label class="form-label d-block d-md-inline-block me-md-3 mb-0">Do you have a valuation report?
+                                            <span>*</span></label>
+                                        <div class="form-check form-check-inline mb-0">
+                                            <label class="form-check-label" for="valuation_report_ya">
+                                                <input class="form-check-input" type="radio" id="valuation_report_ya" [value]="true">
+                                                Yes
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline mb-0">
+                                            <label class="form-check-label" for="valuation_report_na">
+                                                <input class="form-check-input" type="radio" id="valuation_report_na" [value]="false">
+                                                No
+                                            </label>
+                                        </div>
+                                        <div class="filed_tooltip">
+                                            <div class="tooltip__arrow"></div>
+                                            Select Valuation Report
+                                        </div>
+                                    </div>
+                                    <div class="sub_selection_sec">
+                                        <div class="mb-3">
+                                            <div class="sub_selection_inner mt-2">
+                                                <div class="position-relative input_percent_sign field_wrap">
+                                                    <input type="file" class="form-control field_error d-none" id="contact_attach" placeholder="Attach your Contact">
+                                                    <label for="contact_attach" class="form-control file_placeholder d-flex align-items-center">Attach your
+                                                        Contact</label>
+                                                    <span>
+                                                        <img src="../../../../../assets/images/attach.png" class="img-fluid" alt="Attach">
+                                                    </span>
+                                                    <div class="filed_tooltip">
+                                                        <div class="tooltip__arrow"></div> Error Msg Here
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="error" class="error-text">
+                                        Please Select Value
+                                    </div>
+                                </div>
+                                <div class="mb-3 d-flex">
+                                    <div class="col-md-8 clr_light">
+                                        <div class="d-flex align-items-center">
+                                            <div class="profile_image_wrap d-flex align-items-center justify-content-center me-4 p-3">
+                                                <img src="../../../../../assets/images/valuation.png" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="clr_light flex-grow-1">
+                                                <div class="d-flex align-items-cener justify-content-between">
+                                                    My Valuation Report File.
+                                                    <button class="btn p-0 shadow-none">
+                                                        <img src="../../../../../assets/images/cancel.png" class="img-fluid" alt="Cancel">
+                                                    </button>
+                                                </div>
+                                                <div class="profile_upload_bar position-relative overflow-hidden my-2">
+                                                    <span style="width: 86%;"></span>
+                                                </div>
+                                                <small>86% Completed</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 sub_cat_wrap">
+                                    <label class="form-label">Your role in the Transaction<span>*</span></label>
+                                    <div class="position-relative field_wrap">
+                                        <ng-select name="transaction_role" formControlName="transactionRole_Id">
+                                            <ng-option *ngFor="let transaction_role of transaction_roles" [value]="transaction_role.role_Id">
+                                                {{transaction_role.name}}</ng-option>
+                                        </ng-select>
+                                        <div class="filed_tooltip">
+                                            <div class="tooltip__arrow"></div>
+                                            Select Transaction Role
+                                        </div>
+                                    </div>
+                                    <div id="error" class="error-text">
+                                        <div>
+                                            <!-- Please Select Transaction Role -->
+                                        </div>
+                                    </div>
+                                    <div class="sub_selection_sec" *ngIf="showMendate">
+                                        <div class="mb-3">
+                                            <div class="d-md-flex align-items-center pt-4">
+                                                <label class="form-label d-block d-md-inline-block me-md-3">Do you have a
+                                                    Mandate<span>*</span></label>
+                                                <div class="form-check form-check-inline mb-0">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="radio" formControlName="isMendate" id="mandate_y" [value]="true">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline mb-0">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="radio" formControlName="isMendate" id="mandate_n" [value]="false">
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div id="error" class="error-text">
+                                                Please Select Value
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="position-relative input_percent_sign field_wrap" *ngIf="showMendate">
+                                        <input type="file" id="mandateAttach" placeholder="Attach your Mandate" class="form-control field_error d-none">
+                                        <label for="mandateAttach" class="form-control file_placeholder d-flex align-items-center">Attach your Mandate</label>
+                                        <span>
+                                            <img src="../../../../../assets/images/attach.png" alt="Attach" class="img-fluid">
+                                        </span>
+                                        <div class="filed_tooltip">
+                                            <div class="tooltip__arrow"></div> Error Msg Here
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Additional Description<span>*</span></label>
+                                    <div class="position-relative field_wrap">
+                                        <textarea class="form-control" name="so_additional_description" placeholder="Brief, competition, and market size etc."></textarea>
+                                        <div class="filed_tooltip">
+                                            <div class="tooltip__arrow"></div>
+                                            Detailed Description
+                                        </div>
+                                    </div>
+                                    <div id="error" class="error-text">
+                                        <div>
+                                            <!-- Enter Description -->
+                                        </div>
+                                        <div>
+                                            <!-- Description Must be greater than 10 words -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" formControlName="termsAndConditions" type="checkbox" value="" id="agree_check">
+                                    <label class="form-check-label" for="agree_check">
+                                        Agreed To Terms and Conditions *
+                                    </label>
+                                    <div id="error" class="error-text">
+                                        Please Agree to Terms and Conditions
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4 mb-2">
+                                        <button type="button" class="form_tab_btn form_btn_bordered">Cancel</button>
+                                    </div>
+                                    <div class="col-sm-4 mb-2">
+                                        <button type="button" class="form_tab_btn form_btn_dark" *ngIf="false">Save
+                                            as
+                                            Draft</button>
+                                    </div>
+                                    <div class="col-sm-4 mb-2">
+                                        <button type="button" class="form_tab_btn theme_btn">Next</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- additional info /-->
+
+                        <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Project Name
+                                </div>
+                                <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
+                                    Lorem ipsum dolor sit amet
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Do you have a contract with an operator
+                                </div>
+                                <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
+                                    Lorem ipsum dolor sit amet
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Annual Gross Income
+                                </div>
+                                <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
+                                    Lorem ipsum dolor sit amet
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Do you have a valuation report?
+                                </div>
+                                <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
+                                    Lorem ipsum dolor sit amet
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Your role in the Transaction
+                                </div>
+                                <div class="col-md-6 mt-1 mt-md-0 review_txt_sel">
+                                    Lorem ipsum dolor sit amet
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6 review_txt_opt">
+                                    Additional Description
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 review_txt_opt">
+                                    <div class="review_txt_txtarea">
+                                        Lorem ipsum dolor sit amet
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <div class="row">
+                                        <div class="col-sm-4 mb-2">
+                                            <button type="button" class="form_tab_btn form_btn_bordered" (click)="this.formTabSelected=true">Back</button>
+                                        </div>
+                                        <div class="col-sm-4 mb-2">
+                                            <button type="button" class="form_tab_btn form_btn_dark" (click)="this.formTabSelected=true">Edit</button>
+                                        </div>
+                                        <div class="col-sm-4 mb-2">
+                                            <button type="button" class="form_tab_btn theme_btn">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
